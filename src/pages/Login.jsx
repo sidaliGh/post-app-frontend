@@ -1,10 +1,12 @@
 import React from 'react'
 
+import '../style/loginPage.css'
+
 const Login = () => {
   return (
-    <div>
-        <h1>Login Page</h1>
-    </div>
+   <section className='login-section'>
+     <h1>Login</h1>
+   </section>
   )
 }
 

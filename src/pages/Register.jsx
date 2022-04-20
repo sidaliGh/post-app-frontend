@@ -1,10 +1,10 @@
 import React from 'react'
-
+import '../style/registerPage.css'
 const Register = () => {
   return (
-    <div>
-        <h1>Register Page</h1>
-    </div>
+    <section className='register-section'>
+      <h1>Create a new account</h1>
+    </section>
   )
 }
 
