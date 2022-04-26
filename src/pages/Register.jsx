@@ -1,29 +1,47 @@
-import React, {useState} from 'react'
-import { useDispatch } from 'react-redux'
-import { register } from '../features/auth/authSlice'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { register, reset } from '../features/auth/authSlice'
 
 import '../style/registerPage.css'
 const Register = () => {
   const [formData, setFormData] = useState({
     name: '',
-    email: '', 
-    password: ''
+    email: '',
+    password: '',
   })
 
-  const {name, email, password} = formData
+  const { name, email, password } = formData
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
+
+  useEffect(() => {
+    if(isError){
+      console.log(message)
+    }
+
+    if(isSuccess && user){
+      navigate('/')
+    }
+
+    dispatch(reset())
+  }, [dispatch, user, isSuccess, isError, message, navigate])
 
   const onChange = (event) => {
     setFormData((prevState) => ({
       ...prevState,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     }))
   }
 
   const onSubmit = (event) => {
     event.preventDefault()
-    const userData = {name, email, password}
+    const userData = { name, email, password }
     dispatch(register(userData))
   }
   return (

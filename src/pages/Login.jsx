@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
-import { useDispatch } from 'react-redux'
-import { login } from '../features/auth/authSlice'
+import React, {useState, useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { login, reset } from '../features/auth/authSlice'
 
 import '../style/loginPage.css'
 
@@ -13,6 +14,20 @@ const Login = () => {
   const {email, password} = formData
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const {user, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
+
+  useEffect(() =>{
+    if(isError){
+      console.log(message)
+    }
+
+    if(isSuccess && user){
+      navigate('/')
+      dispatch(reset())
+    }
+  }, [dispatch, isError, isSuccess, user, message, navigate])
 
   const onChange = (event) => {
     setFormData((prevState) => ({

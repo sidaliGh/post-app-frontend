@@ -51,6 +51,14 @@ body{
   font-weight: 800;
 }
 
+.menu-container .menu-logout:hover{
+  cursor: pointer;
+  background-color: white;
+  padding: 5px 10px;
+  color: black;
+  font-weight: 800;
+}
+
 
 .footer-container{
   height: auto;
