@@ -67,6 +67,7 @@ const Login = () => {
             />
             <button className='btn-form'>Login</button>
           </form>
+          {isError && (<p className='error-message_form'>{message}</p>)}
         </div>
       </div>
     </section>

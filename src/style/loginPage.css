@@ -18,3 +18,10 @@
 .login-bottom_container{
     width: 100%;
 }
+
+@media (max-width: 768px){
+    .login-main_container{
+        width: 80%;
+    }
+
+}

@@ -27,9 +27,10 @@ const Register = () => {
 
     if(isSuccess && user){
       navigate('/')
+      dispatch(reset())
     }
 
-    dispatch(reset())
+    
   }, [dispatch, user, isSuccess, isError, message, navigate])
 
   const onChange = (event) => {
@@ -78,6 +79,7 @@ const Register = () => {
             />
             <button className='btn-form'>Register</button>
           </form>
+          {isError && (<p className='error-message_form'>{message}</p>)}
         </div>
       </div>
     </section>

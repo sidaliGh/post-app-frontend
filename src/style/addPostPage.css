@@ -1,0 +1,26 @@
+.addpost-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.addpost-main_container {
+  width: 25%;
+  height: fit-content;
+  padding: 20px;
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+}
+.addpost-bottom_container {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .addpost-main_container {
+    width: 80%;
+  }
+}

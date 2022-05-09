@@ -25,6 +25,9 @@ const Header = () => {
         <ul className='menu-container'>
           {user ? (
             <>
+            <li>
+                <Link to='/add-post'>Add Post</Link>
+              </li>
               <li>
                 <Link to='/profile'>Profile</Link>
               </li>

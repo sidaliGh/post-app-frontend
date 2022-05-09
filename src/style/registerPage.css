@@ -40,3 +40,16 @@
     padding: 5px 10px;
     font-weight: 700;
 }
+
+.error-message_form{
+    margin-top: 20px;
+    text-align: center;
+    color: red;
+}
+
+@media (max-width: 768px){
+    .register-main_container{
+        width: 80%;
+    }
+
+}
