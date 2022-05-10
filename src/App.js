@@ -7,8 +7,10 @@ import AddPost from './pages/AddPost'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import NotFound from './pages/NotFound'
+import Posts from './pages/Posts'
 import Profile from './pages/Profile'
 import Register from './pages/Register'
+import SinglePost from './pages/SinglePost'
 
 function App() {
   return (
@@ -28,6 +30,14 @@ function App() {
             {/* AddPost */}
             <Route path='/add-post' element={<PrivateRoute />}>
               <Route path='/add-post' element={<AddPost />} />
+            </Route>
+            {/* Posts */}
+            <Route path='/posts' element={<PrivateRoute />}>
+              <Route path='/posts' element={<Posts />} />
+            </Route>
+            {/* single post */}
+            <Route path='/post/:postId' element={<PrivateRoute />}>
+              <Route path='/post/:postId' element={<SinglePost />} />
             </Route>
           </Routes>
           <Footer />

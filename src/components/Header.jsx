@@ -25,13 +25,18 @@ const Header = () => {
         <ul className='menu-container'>
           {user ? (
             <>
-            <li>
+              <li>
                 <Link to='/add-post'>Add Post</Link>
+              </li>
+              <li>
+                <Link to='/posts'>Posts</Link>
               </li>
               <li>
                 <Link to='/profile'>Profile</Link>
               </li>
-              <li className='menu-logout' onClick={handleLogout}>Logout</li>
+              <li className='menu-logout' onClick={handleLogout}>
+                Logout
+              </li>
             </>
           ) : (
             <>
