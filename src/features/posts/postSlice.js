@@ -24,6 +24,17 @@ export const addPost = createAsyncThunk(
   }
 )
 
+//update Post
+export const updatePost = createAsyncThunk('post/updatePost', async (post, thunkAPI) => {
+  try {
+    const token = thunkAPI.getState().auth.user.token
+    return await postService.updatePost(post, token)
+  } catch (error) {
+    const message = error.response.data.message
+    return thunkAPI.rejectWithValue(message)
+  }
+})
+
 //get posts
 export const getPosts = createAsyncThunk(
   'post/getPosts',
@@ -53,6 +64,15 @@ export const getPost = createAsyncThunk(
   }
 )
 
+//DELETE POST
+export const deletePost = createAsyncThunk('post/deletePost', async (postId, thunkAPI) => {
+  try{
+    const token = thunkAPI.getState().auth.user.token
+    return await postService.deletePost(postId, token)
+  } catch (error) {const message = error.response.data.message
+    return thunkAPI.rejectWithValue(message)}
+})
+
 export const postSlice = createSlice({
   name: 'post',
   initialState,
@@ -76,6 +96,20 @@ export const postSlice = createSlice({
         state.isSuccess = true
       })
       .addCase(addPost.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+
+      //update post
+      .addCase(updatePost.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(updatePost.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+      })
+      .addCase(updatePost.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
@@ -106,6 +140,20 @@ export const postSlice = createSlice({
         state.post = action.payload
       })
       .addCase(getPost.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+
+      //delete post
+      .addCase(deletePost.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(deletePost.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+      })
+      .addCase(deletePost.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

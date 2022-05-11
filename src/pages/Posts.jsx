@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { getPosts } from '../features/posts/postSlice'
+import { deletePost, getPosts } from '../features/posts/postSlice'
 
 const Posts = () => {
   const dispatch = useDispatch()
@@ -13,6 +13,11 @@ const Posts = () => {
   useEffect(() => {
     dispatch(getPosts())
   }, [dispatch])
+
+  const handleDeletePost = (postId) => {
+    dispatch(deletePost(postId))
+    dispatch(getPosts())
+  }
   return (
     <section className='posts-section'>
       <div className='post-main_container'>
@@ -34,6 +39,16 @@ const Posts = () => {
                       }}
                     >
                       View Post
+                    </button>
+                    <button
+                      onClick={() => {
+                        navigate(`/post/update/${post._id}`)
+                      }}
+                    >
+                      Update Post
+                    </button>
+                    <button onClick={() => handleDeletePost(post._id)}>
+                      DELETE POST
                     </button>
                   </>
                 ))}

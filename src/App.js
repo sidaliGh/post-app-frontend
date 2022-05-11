@@ -11,6 +11,7 @@ import Posts from './pages/Posts'
 import Profile from './pages/Profile'
 import Register from './pages/Register'
 import SinglePost from './pages/SinglePost'
+import UpdatePost from './pages/UpdatePost'
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
             {/* single post */}
             <Route path='/post/:postId' element={<PrivateRoute />}>
               <Route path='/post/:postId' element={<SinglePost />} />
+            </Route>
+            {/* update post */}
+            <Route path='/post/update/:postId' element={<PrivateRoute />}>
+              <Route path='/post/update/:postId' element={<UpdatePost />} />
             </Route>
           </Routes>
           <Footer />
