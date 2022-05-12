@@ -8,6 +8,10 @@ const initialState = {
   isSuccess: false,
   isLoading: false,
   message: '',
+  addPostSuccess: false,
+  singlePostSuccess: false,
+  deletePostSuccess: false,
+  updatePostSuccess: false
 }
 
 //add post
@@ -84,6 +88,9 @@ export const postSlice = createSlice({
       state.isError = false
       state.isSuccess = false
       state.message = ''
+      state.addPostSuccess = false
+      state.singlePostSuccess = false
+      state.deletePostSuccess = false
     },
   },
   extraReducers: (builder) => {
@@ -93,7 +100,7 @@ export const postSlice = createSlice({
       })
       .addCase(addPost.fulfilled, (state, action) => {
         state.isLoading = false
-        state.isSuccess = true
+        state.addPostSuccess = true
       })
       .addCase(addPost.rejected, (state, action) => {
         state.isLoading = false
@@ -107,7 +114,7 @@ export const postSlice = createSlice({
       })
       .addCase(updatePost.fulfilled, (state, action) => {
         state.isLoading = false
-        state.isSuccess = true
+        state.updatePostSuccess = true
       })
       .addCase(updatePost.rejected, (state, action) => {
         state.isLoading = false
@@ -136,7 +143,7 @@ export const postSlice = createSlice({
       })
       .addCase(getPost.fulfilled, (state, action) => {
         state.isLoading = false
-        state.isSuccess = true
+        state.singlePostSuccess = true
         state.post = action.payload
       })
       .addCase(getPost.rejected, (state, action) => {
@@ -151,7 +158,7 @@ export const postSlice = createSlice({
       })
       .addCase(deletePost.fulfilled, (state, action) => {
         state.isLoading = false
-        state.isSuccess = true
+        state.deletePostSuccess = true
       })
       .addCase(deletePost.rejected, (state, action) => {
         state.isLoading = false

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { getPost, updatePost } from '../features/posts/postSlice'
+import { getPost, updatePost, reset } from '../features/posts/postSlice'
 
 import '../style/updatePostPage.css'
 const UpdatePost = () => {
@@ -15,12 +15,16 @@ const UpdatePost = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const { post, isLoading, isSuccess, isError, message } = useSelector(
+  const { post, isLoading, singlePostSuccess, updatePostSuccess, isError, message } = useSelector(
     (state) => state.post
   )
   useEffect(() => {
     dispatch(getPost(postId))
-  }, [dispatch, isError, isSuccess, navigate, message, postId])
+    if(updatePostSuccess){
+      dispatch(reset())
+      navigate('/posts')
+    }
+  }, [dispatch, isError, singlePostSuccess, updatePostSuccess, navigate, message, postId])
 
   const onChange = (event) => {
     setFormData((prevState) => ({
@@ -44,7 +48,7 @@ const UpdatePost = () => {
     <section className='updatepost-section'>
       {isLoading ? (
         <p>loading ...</p>
-      ) : (
+      ) : singlePostSuccess && (
         <div className='updatepost-main_container'>
           <div className='updatepost-top_container'>
             <h1>Update Post</h1>

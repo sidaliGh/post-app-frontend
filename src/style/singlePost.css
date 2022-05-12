@@ -1,0 +1,21 @@
+.singlepost-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.singlepost-content{
+    width: 30%;
+    padding: 20px;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.img-singlepost{
+    height: 200px;
+    width: 200px;
+}
+.description-singlepost{
+    text-align: center;
+}

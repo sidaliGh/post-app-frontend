@@ -16,17 +16,15 @@ const AddPost = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const {user} = useSelector(state => state.auth)
-    const {isLoading, isSuccess, isError, message} = useSelector(state => state.post)
+    const {isLoading, addPostSuccess, isError, message} = useSelector(state => state.post)
 
     useEffect(() => {
-        if(isError){
-            console.log(message)
-        }
-        if(isSuccess){
-            navigate('/')
+      dispatch(reset())
+        if(addPostSuccess){
             dispatch(reset())
+            navigate('/posts')
         }
-    }, [dispatch, isSuccess, isError, navigate, message])
+    }, [dispatch, addPostSuccess, isError, navigate, message])
 
 
     const onChange = (event) => {

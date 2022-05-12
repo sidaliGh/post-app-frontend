@@ -1,0 +1,59 @@
+.posts-section{
+    width: 100%;
+}
+
+.post-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th{
+    background-color: black;
+    color: white;
+    font-weight: 700;
+}
+
+td, th{
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 8px;
+    max-width: 500px;
+}
+
+.img-post{
+    height: 50px;
+    width: 50px;
+}
+.btn-view{
+    cursor: pointer;
+    background-color: cornflowerblue;
+    border: 0;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-weight: 700;
+    color: white;
+}
+.btn-update{
+    cursor: pointer;
+    background-color: green;
+    border: 0;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-weight: 700;
+    color: white;
+}
+.btn-delete{
+    cursor: pointer;
+    background-color: red;
+    border: 0;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-weight: 700;
+    color: white;
+}
